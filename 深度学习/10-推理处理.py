@@ -1,5 +1,5 @@
 import pickle
-from mnist import load_mnist
+from minist数据集.mnist import load_mnist
 import numpy as np
 
 
@@ -21,7 +21,7 @@ def get_data():
 
 
 def init_network():
-    with open('/Users/hui99563/Documents/01_编程学习/python/python_code/Deep_Learning/深度学习/minist数据集/sample_weight.pkl', 'rb') as f:
+    with open('./minist数据集/sample_weight.pkl', 'rb') as f:
         network = pickle.load(f)
     return network
 
