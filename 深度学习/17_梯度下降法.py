@@ -5,11 +5,6 @@ def function_2(x):
     return np.sum(x ** 2)
 
 
-def numerical_diff(f, x):
-    h = 1e-4
-    return (f(x + h) - f(x - h)) / (2 * h)
-
-
 def numerical_gradient(f, x):
     h = 1e-4
     grad = np.zeros_like(x)
@@ -29,6 +24,16 @@ def numerical_gradient(f, x):
     return grad
 
 
-print(numerical_gradient(function_2, np.array([3.0, 4.0])))
-print(numerical_gradient(function_2, np.array([0.0, 2.0])))
-print(numerical_gradient(function_2, np.array([3.0, 0.0])))
+def gradient_descent(f, _init_x, lr=0.01, step_num=100):
+    x = _init_x
+
+    for i in range(step_num):
+        grad = numerical_gradient(f, x)
+        x -= lr * grad
+    return x
+
+
+if __name__ == '__main__':
+    init_x = np.array([-3.0, 4.0])
+    result = gradient_descent(function_2, _init_x=init_x, lr=0.1, step_num=100)
+    print(result)
